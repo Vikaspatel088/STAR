@@ -1,0 +1,298 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* STAR Tourism Safety System - Design System
+   Inspired by: Rajasthan heritage (gold, amber, sandstone) + Government trust (deep blue) + Safety (red alerts)
+*/
+
+@layer base {
+  :root {
+    /* Core palette - Royal Blue + Amber Gold */
+    --background: 210 20% 98%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    /* Primary - Deep Royal Blue (Trust, Government) */
+    --primary: 217 71% 25%;
+    --primary-foreground: 45 100% 96%;
+
+    /* Secondary - Warm Amber Gold (Rajasthan Heritage) */
+    --secondary: 38 92% 50%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 210 20% 94%;
+    --muted-foreground: 215 16% 47%;
+
+    /* Accent - Teal for action elements */
+    --accent: 174 62% 40%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Destructive - Safety Red for SOS */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 217 71% 25%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    
+    --warning: 38 92% 50%;
+    --warning-foreground: 222 47% 11%;
+
+    --info: 199 89% 48%;
+    --info-foreground: 0 0% 100%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(217 71% 25%) 0%, hsl(217 71% 35%) 50%, hsl(38 92% 50% / 0.3) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(38 92% 50%) 0%, hsl(45 93% 47%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(210 20% 98%) 100%);
+    --gradient-sos: linear-gradient(135deg, hsl(0 84% 60%) 0%, hsl(0 84% 50%) 100%);
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px hsl(217 71% 25% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(217 71% 25% / 0.1), 0 2px 4px -2px hsl(217 71% 25% / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(217 71% 25% / 0.1), 0 4px 6px -4px hsl(217 71% 25% / 0.1);
+    --shadow-xl: 0 20px 25px -5px hsl(217 71% 25% / 0.1), 0 8px 10px -6px hsl(217 71% 25% / 0.1);
+    --shadow-gold: 0 4px 14px hsl(38 92% 50% / 0.3);
+    --shadow-sos: 0 4px 20px hsl(0 84% 60% / 0.4);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222 47% 8%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 38 92% 50%;
+    --primary-foreground: 222 47% 11%;
+
+    --secondary: 217 32% 25%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 32% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 174 62% 45%;
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 32% 20%;
+    --input: 217 32% 20%;
+    --ring: 38 92% 50%;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', sans-serif;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply border border-white/60 bg-white/70 backdrop-blur-xl shadow-xl shadow-slate-900/5;
+  }
+
+  .premium-card {
+    @apply glass-card rounded-3xl transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary/10;
+  }
+
+  .page-surface {
+    background:
+      radial-gradient(circle at 10% 0%, hsl(var(--accent) / .08), transparent 28rem),
+      radial-gradient(circle at 90% 15%, hsl(var(--secondary) / .10), transparent 24rem),
+      hsl(var(--background));
+  }
+
+  .route-hotels {
+    background:
+      radial-gradient(circle at 90% 0%, hsl(38 92% 50% / .14), transparent 26rem),
+      hsl(var(--background));
+  }
+
+  .route-monuments {
+    background:
+      radial-gradient(circle at 8% 10%, hsl(174 62% 40% / .12), transparent 28rem),
+      hsl(var(--background));
+  }
+
+  .route-guides {
+    background:
+      radial-gradient(circle at 85% 15%, hsl(217 71% 25% / .12), transparent 26rem),
+      hsl(var(--background));
+  }
+
+  .route-chat {
+    background:
+      radial-gradient(circle at 50% 0%, hsl(174 62% 40% / .14), transparent 30rem),
+      hsl(var(--background));
+  }
+
+  .route-dashboard {
+    background:
+      radial-gradient(circle at 95% 5%, hsl(38 92% 50% / .14), transparent 24rem),
+      hsl(var(--background));
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-gold);
+  }
+
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+
+  .gold-gradient {
+    background: var(--gradient-gold);
+  }
+
+  .sos-gradient {
+    background: var(--gradient-sos);
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s linear infinite;
+    background-size: 200% 100%;
+  }
+
+  .pattern-dots {
+    background-image: radial-gradient(circle, hsl(var(--muted-foreground) / 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  .pattern-rajasthan {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4a017' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .hero-collage {
+    background-image:
+      linear-gradient(90deg, rgba(5, 16, 40, .92) 0%, rgba(5, 16, 40, .62) 44%, rgba(5, 16, 40, .18) 100%),
+      url("https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=1800&q=85");
+    background-size: cover;
+    background-position: center;
+  }
+
+  .hero-glass {
+    background: linear-gradient(135deg, rgba(255,255,255,.17), rgba(255,255,255,.04));
+    border: 1px solid rgba(255,255,255,.24);
+    box-shadow: 0 25px 80px rgba(0,0,0,.24), inset 0 1px rgba(255,255,255,.25);
+    backdrop-filter: blur(18px);
+  }
+
+  .brand-orb {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .brand-orb::after {
+    content: '';
+    position: absolute;
+    inset: -5px;
+    z-index: -1;
+    border-radius: inherit;
+    background: hsl(var(--accent) / .25);
+    filter: blur(10px);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Leaflet map styles */
+.leaflet-container {
+  @apply rounded-lg;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-muted rounded-full;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-muted-foreground/30 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-muted-foreground/50;
+}
